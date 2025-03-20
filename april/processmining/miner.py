@@ -120,12 +120,12 @@ class HeuristicsMiner(Miner):
     def get_two_grams(traces, flatten=True):
         ngrams = np.dstack((traces[:, :-1], traces[:, 1:]))
         if flatten:
-            ngrams = ngrams.reshape((np.product(ngrams.shape[:-1]), 2)).astype(int)
+            ngrams = ngrams.reshape((np.prod(ngrams.shape[:-1]), 2)).astype(int)
         return ngrams
 
     @staticmethod
     def get_three_grams(traces, flatten=True):
         ngrams = np.dstack((traces[:, :-2], traces[:, 1:-1], traces[:, 2:]))
         if flatten:
-            ngrams = ngrams.reshape((np.product(ngrams.shape[:-1]), 3)).astype(int)
+            ngrams = ngrams.reshape((np.prod(ngrams.shape[:-1]), 3)).astype(int)
         return ngrams

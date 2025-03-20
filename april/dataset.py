@@ -281,7 +281,7 @@ class Dataset(object):
 
     @staticmethod
     def remove_time_dimension(x):
-        return x.reshape((x.shape[0], np.product(x.shape[1:])))
+        return x.reshape((x.shape[0], np.prod(x.shape[1:])))
 
     @property
     def flat_features_2d(self):

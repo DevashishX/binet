@@ -78,7 +78,7 @@ class TStidePlus(AnomalyDetector):
             ngrams = n
 
         # Flatten ngrams
-        ngrams = ngrams.reshape(np.product(ngrams.shape[:-2]), np.product(ngrams.shape[2:]))
+        ngrams = ngrams.reshape(np.prod(ngrams.shape[:-2]), np.prod(ngrams.shape[2:]))
         ngrams = np.apply_along_axis(lambda x: hash(x.tostring()), -1, ngrams)
 
         # Count ngrams
@@ -94,12 +94,12 @@ class TStidePlus(AnomalyDetector):
             for i in range(dataset.num_attributes):
                 m = np.copy(n)
                 m[:, :, i] = -1
-                m = m.reshape(*m.shape[:-2], np.product(m.shape[2:]))
+                m = m.reshape(*m.shape[:-2], np.prod(m.shape[2:]))
                 m = np.apply_along_axis(lambda x: hash(x.tostring()), -1, m)
                 ngrams.append(m)
             ngrams = np.dstack(ngrams)
         else:
-            n.reshape(*n.shape[:-2], np.product(n.shape[2:]))
+            n.reshape(*n.shape[:-2], np.prod(n.shape[2:]))
             n = np.apply_along_axis(lambda x: hash(x.tostring()), -1, n)
             ngrams = n
 

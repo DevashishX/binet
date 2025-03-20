@@ -1,4 +1,4 @@
-name: binet
+name: binet_legacy
 channels:
   - defaults
 dependencies:

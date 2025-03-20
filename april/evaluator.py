@@ -265,7 +265,7 @@ class Evaluator(object):
         import pandas as pd
 
         def flatten(a):
-            return a.reshape((a.shape[0], np.product(a.shape[1:])))
+            return a.reshape((a.shape[0], np.prod(a.shape[1:])))
 
         # Number of attributes
         n = self.dataset.num_attributes

@@ -110,7 +110,7 @@ class ProcessMap(object):
         def get_num_successors(x):
             return len([edge[1] for edge in self.graph.edges() if edge[0] == x])
 
-        probabilities = [np.product([1 / max(1, get_num_successors(node)) for node in path]) for path in variants]
+        probabilities = [np.prod([1 / max(1, get_num_successors(node)) for node in path]) for path in variants]
 
         # set globally
         self._variants = EventLog(cases=traces)

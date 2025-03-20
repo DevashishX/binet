@@ -46,7 +46,7 @@ CONFIG_DIR = ROOT_DIR / '.config'
 DATABASE_FILE = OUT_DIR / 'april.db'
 
 # Extensions
-MODEL_EXT = '.model'
+MODEL_EXT = '.keras'
 RESULT_EXT = '.result'
 
 # Misc

@@ -49,6 +49,7 @@ class NNAnomalyDetector(AnomalyDetector):
             self._model = load_model(file_name.str_path)
 
     def _save(self, file_name):
+        print(file_name)
         self.model.save(file_name)
 
     @staticmethod
@@ -363,7 +364,7 @@ def binet_model_fn(dataset,
         return loss_map[attr_name](y_true, y_pred)
 
     # Register it as custom object, so it may be loaded afterwards in conjunction with the model
-    from keras.utils.generic_utils import get_custom_objects
+    from tensorflow.keras.utils import get_custom_objects
     get_custom_objects().update({"custom_loss": custom_loss})
 
     # Compile model

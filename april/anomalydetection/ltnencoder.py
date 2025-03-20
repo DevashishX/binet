@@ -1,19 +1,3 @@
-# Copyright 2018 Timo Nolle
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# ==============================================================================
-
 import numpy as np
 
 from april.anomalydetection.binet.core import NNAnomalyDetector
@@ -24,11 +8,11 @@ from april.enums import Mode
 from april.enums import Strategy
 
 
-class DAE(NNAnomalyDetector):
+class LTNDAEP2P(NNAnomalyDetector):
     """Implements a denoising autoencoder based anomaly detection algorithm."""
 
-    abbreviation = 'dae'
-    name = 'DAE'
+    abbreviation = 'ltndae'
+    name = 'LTNDAE'
 
     supported_heuristics = [Heuristic.BEST, Heuristic.ELBOW_DOWN, Heuristic.ELBOW_UP,
                             Heuristic.LP_LEFT, Heuristic.LP_MEAN, Heuristic.LP_RIGHT,
@@ -55,7 +39,7 @@ class DAE(NNAnomalyDetector):
         :param epochs: Number of epochs to train.
         :param batch_size: Mini batch size.
         """
-        super(DAE, self).__init__(model=model)
+        super(LTNDAEP2P, self).__init__(model=model)
 
     @staticmethod
     def model_fn(dataset, **kwargs):
@@ -98,8 +82,7 @@ class DAE(NNAnomalyDetector):
 
         # Compile model
         model.compile(
-            # optimizer=Adam(lr=0.0001, beta_2=0.99),
-            optimizer=Adam(learning_rate=0.0001, beta_2=0.99),
+            optimizer=Adam(lr=0.0001, beta_2=0.99),
             loss='mean_squared_error',
         )
 

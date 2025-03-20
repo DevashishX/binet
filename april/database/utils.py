@@ -71,7 +71,7 @@ def import_process_maps():
 
     process_maps = []
     process_models = sorted([p for p in PROCESS_MODEL_DIR.glob('*.plg')])
-    for process_model in process_models:
+    for process_model in tqdm(process_models):
         model = PM.from_plg(str(process_model))
 
         g = model.graph
@@ -151,6 +151,6 @@ def import_models():
 
 
 if __name__ == '__main__':
-    # import_process_maps()
+    import_process_maps()
     import_eventlogs()
-    # import_models()
+    import_models()
